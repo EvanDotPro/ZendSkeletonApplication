@@ -21,8 +21,10 @@ $moduleLoader->register();
 $moduleManager = new Zend\Module\Manager($appConfig['modules']);
 $moduleManager->loadModules();
 
+$config = $moduleManager->getConfigListener();
+
 // Create application, bootstrap, and run
-$bootstrap      = new Zend\Mvc\Bootstrap($moduleManager->getMergedConfig());
+$bootstrap      = new Zend\Mvc\Bootstrap($config->getMergedConfig());
 $application    = new Zend\Mvc\Application;
 $bootstrap->bootstrap($application);
 $application->run()->send();
