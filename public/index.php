@@ -18,13 +18,11 @@ $appConfig = new Zend\Config\Config(include __DIR__ . '/../configs/application.c
 $moduleLoader = new Zend\Loader\ModuleAutoloader($appConfig['module_paths']);
 $moduleLoader->register();
 
-$moduleManager = new Zend\Module\Manager(
-    $appConfig['modules'],
-    new Zend\Module\ManagerOptions($appConfig['module_manager_options'])
-);
+$moduleManager = new Zend\Module\Manager($appConfig['modules']);
+$moduleManager->loadModules();
 
 // Create application, bootstrap, and run
-$bootstrap      = new Zend\Mvc\Bootstrap($moduleManager);
+$bootstrap      = new Zend\Mvc\Bootstrap($moduleManager->getMergedConfig());
 $application    = new Zend\Mvc\Application;
 $bootstrap->bootstrap($application);
 $application->run()->send();
