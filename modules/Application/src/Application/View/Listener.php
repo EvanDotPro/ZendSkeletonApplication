@@ -114,7 +114,7 @@ class Listener implements ListenerAggregate
         }
 
         $routeMatch = $e->getRouteMatch();
-        $controller = $routeMatch->getParam('controller', 'index');
+        $controller = $routeMatch->getParam('view-path', $routeMatch->getParam('controller', 'index'));
         $action     = $routeMatch->getParam('action', 'index');
         $script     = $controller . '/' . $action . '.phtml';
 
