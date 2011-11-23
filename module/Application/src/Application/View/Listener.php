@@ -175,7 +175,7 @@ class Listener implements ListenerAggregate
             'display_exceptions' => $this->displayExceptions(),
         );
 
-        $content = $this->view->render('error/404.phtml', $vars);
+        $content = $this->view->render('error/index.phtml', $vars);
 
         $e->setResult($content);
 
