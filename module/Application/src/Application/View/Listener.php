@@ -191,7 +191,7 @@ class Listener implements ListenerAggregate
             $response = new Response();
             $e->setResponse($response);
         }
-
+        
         switch ($error) {
             case Application::ERROR_CONTROLLER_NOT_FOUND:
             case Application::ERROR_CONTROLLER_INVALID:
@@ -214,7 +214,7 @@ class Listener implements ListenerAggregate
                 $response->setStatusCode(500);
                 break;
         }
-
+        
         $content = $this->view->render('error/index.phtml', $vars);
 
         $e->setResult($content);
